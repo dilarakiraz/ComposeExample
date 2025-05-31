@@ -49,11 +49,14 @@ fun LargeTopAppBarExample(onBackClick: () -> Unit = {}) {
                 },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(
+                            Icons.Default.ArrowBack,
+                            contentDescription = "Back"
+                        )
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* TODO */ }) {
+                    IconButton(onClick = {/*todo*/ }) {
                         Icon(Icons.Default.Favorite, contentDescription = "Favorite")
                     }
                     IconButton(onClick = { showMenu = !showMenu }) {
@@ -65,14 +68,13 @@ fun LargeTopAppBarExample(onBackClick: () -> Unit = {}) {
                     ) {
                         DropdownMenuItem(
                             text = { Text("Edit") },
-                            onClick = { /* TODO */ },
-                            leadingIcon = {
-                                Icon(Icons.Default.Edit, contentDescription = null)
-                            }
+                            onClick = {/*todo*/ },
+                            leadingIcon = { Icon(Icons.Default.Edit, contentDescription = null) }
                         )
+
                         DropdownMenuItem(
                             text = { Text("Delete") },
-                            onClick = { /* TODO */ },
+                            onClick = {/*todo*/ },
                             leadingIcon = {
                                 Icon(Icons.Default.Delete, contentDescription = null)
                             }
@@ -87,10 +89,10 @@ fun LargeTopAppBarExample(onBackClick: () -> Unit = {}) {
                 .fillMaxSize()
                 .padding(it)
         ) {
-            items(50) { index ->
+            items(50) {
                 ListItem(
-                    headlineContent = { Text("Item $index") },
-                    supportingContent = { Text("Description for item $index") },
+                    headlineContent = { Text("Item $it") },
+                    supportingContent = { Text("Description for item $it") },
                     leadingContent = {
                         Icon(Icons.Default.Star, contentDescription = null)
                     }
