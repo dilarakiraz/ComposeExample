@@ -37,7 +37,7 @@ fun SearchAppBarExample(onBackClick: () -> Unit = {}) {
                 SearchBar(
                     query = searchQuery,
                     onQueryChange = { searchQuery = it },
-                    onSearch = { /* TODO */ },
+                    onSearch = {/*todo*/ },
                     active = isSearchActive,
                     onActiveChange = { isSearchActive = it },
                     leadingIcon = {

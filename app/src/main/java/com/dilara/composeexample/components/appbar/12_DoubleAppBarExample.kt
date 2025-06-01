@@ -54,10 +54,10 @@ fun DoubleAppBarExample(onBackClick: () -> Unit = {}) {
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
+                        containerColor = MaterialTheme.colorScheme.surfaceDim,
                         titleContentColor = Color.White,
-                        navigationIconContentColor = Color.White,
-                        actionIconContentColor = Color.White
+                        navigationIconContentColor = Color.Magenta,
+                        actionIconContentColor = Color.Cyan
                     )
                 )
 

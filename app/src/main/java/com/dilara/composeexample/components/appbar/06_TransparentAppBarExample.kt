@@ -38,7 +38,7 @@ fun TransparentAppBarExample(onBackClick: () -> Unit = {}) {
                             Icon(
                                 Icons.Default.ArrowBack,
                                 contentDescription = "Back",
-                                tint = Color.White
+                                tint = Color.Red
                             )
                         }
                     },
@@ -47,7 +47,7 @@ fun TransparentAppBarExample(onBackClick: () -> Unit = {}) {
                             Icon(
                                 Icons.Default.Share,
                                 contentDescription = "Share",
-                                tint = Color.White
+                                tint = Color.Red
                             )
                         }
                     },

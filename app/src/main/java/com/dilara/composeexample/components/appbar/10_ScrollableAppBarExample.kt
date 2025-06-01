@@ -33,10 +33,7 @@ fun ScrollableAppBarExample(onBackClick: () -> Unit = {}) {
                 title = {
                     Column {
                         Text("Scrollable AppBar")
-                        Text(
-                            "Scroll to see the effect",
-                            style = MaterialTheme.typography.bodyMedium
-                        )
+                        Text("Scroll to see the effect", style = MaterialTheme.typography.bodyMedium)
                     }
                 },
                 navigationIcon = {
@@ -45,7 +42,7 @@ fun ScrollableAppBarExample(onBackClick: () -> Unit = {}) {
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* TODO */ }) {
+                    IconButton(onClick = {/*todo*/ }) {
                         Icon(Icons.Default.Share, contentDescription = "Share")
                     }
                 },
