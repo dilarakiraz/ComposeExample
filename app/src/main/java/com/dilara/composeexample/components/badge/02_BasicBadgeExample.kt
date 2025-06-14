@@ -56,7 +56,6 @@ fun BasicBadgeExample() {
             )
         }
 
-        // Colored badge
         BadgedBox(
             badge = {
                 Badge(

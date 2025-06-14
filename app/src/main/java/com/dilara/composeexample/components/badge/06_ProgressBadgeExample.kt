@@ -1,13 +1,33 @@
 package com.dilara.composeexample.components.badge
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Slider
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -17,7 +37,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dilara.composeexample.R
@@ -29,7 +49,14 @@ import kotlin.math.sin
 fun ProgressBadgeExample() {
     var progress by remember { mutableStateOf(0f) }
     val infiniteTransition = rememberInfiniteTransition(label = "progress")
-    
+
+    val primaryColor = MaterialTheme.colorScheme.primary
+    val surfaceVariantColor = MaterialTheme.colorScheme.surfaceVariant
+    val onPrimaryColor = MaterialTheme.colorScheme.onPrimary
+    val onSurfaceVariantColor = MaterialTheme.colorScheme.onSurfaceVariant
+    val primaryContainerColor = MaterialTheme.colorScheme.primaryContainer
+    val onPrimaryContainerColor = MaterialTheme.colorScheme.onPrimaryContainer
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -37,13 +64,14 @@ fun ProgressBadgeExample() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
-        // Circular Progress Badge
         Box(
             modifier = Modifier.size(80.dp),
             contentAlignment = Alignment.Center
         ) {
             CircularProgressBadge(
                 progress = progress,
+                primaryColor = primaryColor,
+                surfaceVariantColor = surfaceVariantColor,
                 modifier = Modifier.fillMaxSize()
             )
             Text(
@@ -52,27 +80,26 @@ fun ProgressBadgeExample() {
             )
         }
 
-        // Linear Progress Badge
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(40.dp)
                 .clip(RoundedCornerShape(20.dp))
-                .background(MaterialTheme.colorScheme.surfaceVariant)
+                .background(surfaceVariantColor)
         ) {
             LinearProgressBadge(
                 progress = progress,
+                primaryColor = primaryColor,
                 modifier = Modifier.fillMaxSize()
             )
             Text(
                 text = "${(progress * 100).toInt()}%",
                 modifier = Modifier.align(Alignment.Center),
                 style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = onSurfaceVariantColor
             )
         }
 
-        // Step Progress Badge
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
@@ -81,12 +108,17 @@ fun ProgressBadgeExample() {
                 StepProgressBadge(
                     isCompleted = step < (progress * 5).toInt(),
                     isCurrent = step == (progress * 5).toInt(),
+                    primaryColor = primaryColor,
+                    primaryContainerColor = primaryContainerColor,
+                    surfaceVariantColor = surfaceVariantColor,
+                    onPrimaryColor = onPrimaryColor,
+                    onPrimaryContainerColor = onPrimaryContainerColor,
+                    onSurfaceVariantColor = onSurfaceVariantColor,
                     modifier = Modifier.size(40.dp)
                 )
             }
         }
 
-        // Animated Progress Badge
         val rotation by infiniteTransition.animateFloat(
             initialValue = 0f,
             targetValue = 360f,
@@ -95,13 +127,14 @@ fun ProgressBadgeExample() {
             ),
             label = "rotation"
         )
-        
+
         Box(
             modifier = Modifier.size(80.dp),
             contentAlignment = Alignment.Center
         ) {
             AnimatedProgressBadge(
                 rotation = rotation,
+                primaryColor = primaryColor,
                 modifier = Modifier.fillMaxSize()
             )
             Text(
@@ -110,7 +143,6 @@ fun ProgressBadgeExample() {
             )
         }
 
-        // Progress Control
         Slider(
             value = progress,
             onValueChange = { progress = it },
@@ -122,24 +154,24 @@ fun ProgressBadgeExample() {
 @Composable
 private fun CircularProgressBadge(
     progress: Float,
+    primaryColor: Color,
+    surfaceVariantColor: Color,
     modifier: Modifier = Modifier
 ) {
     Canvas(modifier = modifier) {
         val strokeWidth = size.width * 0.1f
         val radius = (size.width - strokeWidth) / 2
         val center = Offset(size.width / 2, size.height / 2)
-        
-        // Background circle
+
         drawCircle(
-            color = MaterialTheme.colorScheme.surfaceVariant,
+            color = surfaceVariantColor,
             radius = radius,
             center = center,
             style = Stroke(width = strokeWidth)
         )
-        
-        // Progress arc
+
         drawArc(
-            color = MaterialTheme.colorScheme.primary,
+            color = primaryColor,
             startAngle = -90f,
             sweepAngle = progress * 360f,
             useCenter = false,
@@ -153,6 +185,7 @@ private fun CircularProgressBadge(
 @Composable
 private fun LinearProgressBadge(
     progress: Float,
+    primaryColor: Color,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier) {
@@ -161,7 +194,7 @@ private fun LinearProgressBadge(
                 .fillMaxWidth(progress)
                 .fillMaxHeight()
                 .clip(RoundedCornerShape(20.dp))
-                .background(MaterialTheme.colorScheme.primary)
+                .background(primaryColor)
         )
     }
 }
@@ -170,6 +203,12 @@ private fun LinearProgressBadge(
 private fun StepProgressBadge(
     isCompleted: Boolean,
     isCurrent: Boolean,
+    primaryColor: Color,
+    primaryContainerColor: Color,
+    surfaceVariantColor: Color,
+    onPrimaryColor: Color,
+    onPrimaryContainerColor: Color,
+    onSurfaceVariantColor: Color,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -177,9 +216,9 @@ private fun StepProgressBadge(
             .clip(CircleShape)
             .background(
                 when {
-                    isCompleted -> MaterialTheme.colorScheme.primary
-                    isCurrent -> MaterialTheme.colorScheme.primaryContainer
-                    else -> MaterialTheme.colorScheme.surfaceVariant
+                    isCompleted -> primaryColor
+                    isCurrent -> primaryContainerColor
+                    else -> surfaceVariantColor
                 }
             ),
         contentAlignment = Alignment.Center
@@ -188,15 +227,12 @@ private fun StepProgressBadge(
             Icon(
                 painter = painterResource(id = R.drawable.ic_check),
                 contentDescription = "Completed",
-                tint = MaterialTheme.colorScheme.onPrimary
+                tint = onPrimaryColor
             )
         } else {
             Text(
                 text = if (isCurrent) "•" else "○",
-                color = if (isCurrent) 
-                    MaterialTheme.colorScheme.onPrimaryContainer 
-                else 
-                    MaterialTheme.colorScheme.onSurfaceVariant,
+                color = if (isCurrent) onPrimaryContainerColor else onSurfaceVariantColor,
                 fontSize = 24.sp
             )
         }
@@ -206,21 +242,21 @@ private fun StepProgressBadge(
 @Composable
 private fun AnimatedProgressBadge(
     rotation: Float,
+    primaryColor: Color,
     modifier: Modifier = Modifier
 ) {
     Canvas(modifier = modifier) {
         val strokeWidth = size.width * 0.1f
         val radius = (size.width - strokeWidth) / 2
         val center = Offset(size.width / 2, size.height / 2)
-        
-        // Draw 8 dots in a circle
+
         repeat(8) { index ->
             val angle = (index * 45f + rotation) * (PI / 180f)
             val x = center.x + cos(angle).toFloat() * radius
             val y = center.y + sin(angle).toFloat() * radius
-            
+
             drawCircle(
-                color = MaterialTheme.colorScheme.primary,
+                color = primaryColor,
                 radius = strokeWidth / 2,
                 center = Offset(x, y),
                 alpha = 0.3f + (index * 0.1f)
