@@ -24,7 +24,7 @@ fun NotificationAppBarExample(
     var showNotifications by remember { mutableStateOf(false) }
     val notifications = remember {
         listOf(
-            "New message from John",
+            "New message from Dilara",
             "Meeting reminder at 2 PM",
             "Task deadline approaching",
             "New comment on your post"
