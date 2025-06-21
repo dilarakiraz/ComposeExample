@@ -15,7 +15,9 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +27,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Badge
 import androidx.compose.material3.MaterialTheme
@@ -40,7 +43,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -223,7 +225,8 @@ private fun ClickableBadge(
     Badge(
         modifier = Modifier
             .scale(scale)
-            .clip(RoundedCornerShape(16.dp)),
+            .clip(RoundedCornerShape(16.dp))
+            .clickable { onClick() },
         containerColor = if (isSelected) color else backgroundColor
     ) {
         Text(
@@ -243,22 +246,33 @@ private fun DraggableBadge(
     offsetY: Float,
     onDrag: (Float, Float) -> Unit
 ) {
-    Badge(
+    Box(
         modifier = Modifier
             .offset { IntOffset(offsetX.toInt(), offsetY.toInt()) }
-            .pointerInput(Unit) {
-                detectDragGestures { change, dragAmount ->
-                    change.consume()
-                    onDrag(offsetX + dragAmount.x, offsetY + dragAmount.y)
-                }
-            },
-        containerColor = color
+            .size(80.dp)
+            .draggable(
+                state = rememberDraggableState { delta ->
+                    onDrag(offsetX + delta, offsetY)
+                },
+                orientation = androidx.compose.foundation.gestures.Orientation.Horizontal
+            )
+            .draggable(
+                state = rememberDraggableState { delta ->
+                    onDrag(offsetX, offsetY + delta)
+                },
+                orientation = androidx.compose.foundation.gestures.Orientation.Vertical
+            ),
+        contentAlignment = Alignment.Center
     ) {
-        Text(
-            text = text,
-            color = onColor,
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-        )
+        Badge(
+            containerColor = color
+        ) {
+            Text(
+                text = text,
+                color = onColor,
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+            )
+        }
     }
 }
 
@@ -276,7 +290,9 @@ private fun ExpandableBadge(
     ) {
         Badge(
             containerColor = color,
-            modifier = Modifier.clip(RoundedCornerShape(16.dp))
+            modifier = Modifier
+                .clip(RoundedCornerShape(16.dp))
+                .clickable { onToggle() }
         ) {
             Text(
                 text = text,
