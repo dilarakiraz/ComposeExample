@@ -13,19 +13,19 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="PreviewInteractiveButtonExamples">
+      <SelectionState runConfigName="PreviewSegmentedButtonGroupExample">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewOrderTrackingScreenExample">
+      <SelectionState runConfigName="AnimatedCardExamplePreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewExpandableButtonExample">
+      <SelectionState runConfigName="ExpandableCardExamplePreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewLongPressButtonExample">
+      <SelectionState runConfigName="AllInOneExamplePreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewDropdownMenuButtonExample">
+      <SelectionState runConfigName="SwipeableCardExamplePreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
