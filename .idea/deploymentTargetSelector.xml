@@ -13,19 +13,19 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="PreviewSegmentedButtonGroupExample">
+      <SelectionState runConfigName="PreviewFilterChipGroupDemoScreen">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AnimatedCardExamplePreview">
+      <SelectionState runConfigName="PreviewAdvancedAllInOneChipDemoScreen">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ExpandableCardExamplePreview">
+      <SelectionState runConfigName="PreviewIconChipExample">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AllInOneExamplePreview">
+      <SelectionState runConfigName="AdvancedDatePickerExamplePreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="SwipeableCardExamplePreview">
+      <SelectionState runConfigName="PreviewBasicDatePickerExample">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
