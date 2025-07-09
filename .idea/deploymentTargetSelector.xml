@@ -13,19 +13,19 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="PreviewFilterChipGroupDemoScreen">
+      <SelectionState runConfigName="BirthdayDatePickerExamplePreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewAdvancedAllInOneChipDemoScreen">
+      <SelectionState runConfigName="MultipleDatePickerExamplePreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewIconChipExample">
+      <SelectionState runConfigName="EventDatePickerExamplePreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AdvancedDatePickerExamplePreview">
+      <SelectionState runConfigName="FormDialogExamplePreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewBasicDatePickerExample">
+      <SelectionState runConfigName="SymbolSearchScreenPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
