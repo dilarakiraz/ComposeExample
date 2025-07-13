@@ -13,19 +13,19 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="BirthdayDatePickerExamplePreview">
+      <SelectionState runConfigName="PreviewFabWithPortfolioSummaryAndSnackbarExample - FAB Portfolio Snackbar Preview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MultipleDatePickerExamplePreview">
+      <SelectionState runConfigName="PreviewFabWithPortfolioSummaryAndSnackbarExample - FAB Portfolio Modern Borsa Preview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="EventDatePickerExamplePreview">
+      <SelectionState runConfigName="PreviewFabWithStockSearchAndChipFilterExample - FAB Stock Search Chip Filter Preview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="FormDialogExamplePreview">
+      <SelectionState runConfigName="PreviewFabWithStockSearchAndChipFilterExample - FAB Stock Search Chip Filter Modern Preview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="SymbolSearchScreenPreview">
+      <SelectionState runConfigName="PreviewFabWithExpandableTradeActionsExample - FAB Expandable Trade Actions Modern Preview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
