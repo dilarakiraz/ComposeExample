@@ -13,21 +13,6 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="PreviewFabWithPortfolioSummaryAndSnackbarExample - FAB Portfolio Snackbar Preview">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="PreviewFabWithPortfolioSummaryAndSnackbarExample - FAB Portfolio Modern Borsa Preview">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="PreviewFabWithStockSearchAndChipFilterExample - FAB Stock Search Chip Filter Preview">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="PreviewFabWithStockSearchAndChipFilterExample - FAB Stock Search Chip Filter Modern Preview">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="PreviewFabWithExpandableTradeActionsExample - FAB Expandable Trade Actions Modern Preview">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
     </selectionStates>
   </component>
 </project>

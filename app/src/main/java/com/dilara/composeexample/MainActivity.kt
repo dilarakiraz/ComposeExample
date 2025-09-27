@@ -20,6 +20,7 @@ import com.dilara.composeexample.components.appbar.BottomAppBarExample
 import com.dilara.composeexample.components.bottomSheets.StandardModalBottomSheet
 import com.dilara.composeexample.components.bottomSheets.ListBottomSheet
 import com.dilara.composeexample.components.bottomSheets.SymbolSearchScreen
+import com.dilara.composeexample.applayout.LayoutBasicsPreview
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +42,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ExamplesList() {
     val examples = listOf(
+        ExampleItem("Layout Basics", { LayoutBasicsPreview() }),
         ExampleItem("Small Top App Bar", { SmallTopAppBarExample(it) }),
         ExampleItem("Medium Top App Bar", { MediumTopAppBarExample(it) }),
         ExampleItem("Large Top App Bar", { LargeTopAppBarExample(it) }),
